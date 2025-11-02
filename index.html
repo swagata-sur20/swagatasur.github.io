@@ -3,257 +3,256 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Swagata Sur | Data Scientist Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Swagata Sur | Data Scientist</title>
+
   <style>
-    html { scroll-behavior: smooth; }
-    body { background-color: #0f172a; color: #f1f5f9; }
-    .hero-bg {
-      background: linear-gradient(135deg, #4f46e5, #06b6d4);
-      background-size: 200% 200%;
-      animation: gradientShift 8s ease infinite;
+    :root {
+      --bg1: #0b1220;
+      --bg2: #1a2233;
+      --text: #e4ebf5;
+      --muted: #9aa5b5;
+      --accent1: #3b82f6;
+      --accent2: #7c3aed;
+      --card: rgba(255,255,255,0.04);
     }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
+      scroll-behavior: smooth;
+      overflow-x: hidden;
     }
-    .glow-icon {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    a { color: inherit; text-decoration: none; }
+
+    /* Sticky Nav */
+    nav {
+      position: fixed;
+      top: 15px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
     }
-    .glow-icon:hover {
-      transform: translateY(-6px) scale(1.1);
-      box-shadow: 0 0 25px rgba(99,102,241,0.6);
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+      padding: 8px 18px;
+      background: rgba(15, 20, 35, 0.6);
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
     }
-    .proj-card {
+    nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    nav a:hover { color: #fff; }
+
+    /* Hero */
+    header {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid rgba(255,255,255,0.07);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .accent-line {
+      height: 5px;
+      width: 160px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      border-radius: 10px;
+      margin: 14px auto;
       position: relative;
       overflow: hidden;
-      transition: transform 0.3s ease;
     }
-    .proj-card:hover { transform: translateY(-4px) scale(1.02); }
-    .proj-card img {
-      transition: transform 0.5s ease;
-    }
-    .proj-card:hover img {
-      transform: scale(1.1);
-    }
-    .proj-overlay {
+    .accent-line::after {
+      content: "";
       position: absolute;
-      inset: 0;
-      background: rgba(15,23,42,0.75);
-      color: #fff;
+      top: 0;
+      left: -40%;
+      width: 80%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+      animation: moveGlow 4s linear infinite;
+    }
+    @keyframes moveGlow {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(140%); }
+      100% { transform: translateX(0); }
+    }
+
+    p.tagline {
+      color: var(--muted);
+      font-size: 1rem;
+      margin: 10px 0 15px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .socials a {
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      border-radius: 10px;
+      background: var(--card);
+      transition: all 0.2s ease;
     }
-    .proj-card:hover .proj-overlay { opacity: 1; }
-    .skill-bar {
-      background: rgba(255,255,255,0.1);
-      border-radius: 9999px;
-      overflow: hidden;
-      height: 10px;
+    .socials a:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(59,130,246,0.15);
     }
-    .skill-fill {
-      background: linear-gradient(90deg, #06b6d4, #4f46e5);
-      height: 100%;
-      transition: width 1s ease;
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 20px;
     }
-    .timeline::before {
-      content: '';
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 { margin: 0 0 10px; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+
+    .timeline-item {
+      border-left: 2px solid rgba(255,255,255,0.05);
+      padding-left: 20px;
+      margin-bottom: 25px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: "";
       position: absolute;
-      left: 1rem;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(#4f46e5, #06b6d4);
+      left: -8px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      border-radius: 50%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 700px) {
+      header img { width: 120px; height: 120px; }
+      h1 { font-size: 1.8rem; }
+      section { padding: 60px 15px; }
     }
   </style>
 </head>
-<body class="font-sans antialiased">
+<body>
 
-  <!-- Navbar -->
-  <nav class="fixed w-full bg-slate-900/70 backdrop-blur-md z-50">
-    <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
-      <h1 class="text-xl font-bold text-cyan-300">Swagata Sur</h1>
-      <div class="space-x-6 text-sm text-gray-200">
-        <a href="#projects" class="hover:text-cyan-300">Projects</a>
-        <a href="#experience" class="hover:text-cyan-300">Experience</a>
-        <a href="#skills" class="hover:text-cyan-300">Skills</a>
-        <a href="#education" class="hover:text-cyan-300">Education</a>
-        <a href="#contact" class="hover:text-cyan-300">Contact</a>
-      </div>
-    </div>
+  <nav>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="hero-bg pt-28 pb-20 text-center">
-    <div class="max-w-3xl mx-auto">
-      <div class="w-40 h-40 mx-auto rounded-full overflow-hidden ring-4 ring-white/30">
-        <img src="https://via.placeholder.com/400x400?text=Your+Photo" alt="Profile" class="w-full h-full object-cover">
-      </div>
-      <h1 class="text-4xl md:text-5xl font-extrabold mt-6">Hi, I'm <span class="text-yellow-300">Swagata Sur</span> 👋</h1>
-      <p class="mt-3 text-lg text-gray-100">Associate Data Scientist | Machine Learning | Generative AI | Analytics</p>
+  <header>
+    <img src="Swagata-sur.jpg" alt="Swagata Sur">
+    <h1>Swagata Sur</h1>
+    <div class="accent-line"></div>
+    <p class="tagline">Data Scientist | AML & Compliance Analytics | Generative AI</p>
 
-      <div class="flex justify-center space-x-5 mt-6">
-        <a href="https://www.linkedin.com/in/swagata-sur?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="glow-icon bg-white/10 p-3 rounded-full">
-          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="w-6 h-6">
-        </a>
-        <a href="mailto:swagata.stats@gmail.com" class="glow-icon bg-white/10 p-3 rounded-full">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail" class="w-6 h-6">
-        </a>
-        <a href="https://www.instagram.com/swa_ga_taa?igsh=cnV4MTkxY3JndXln" target="_blank" class="glow-icon bg-white/10 p-3 rounded-full">
-          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="w-6 h-6">
-        </a>
-        <a href="https://github.com/swagata-sur20" target="_blank" class="glow-icon bg-white/10 p-3 rounded-full">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub" class="w-6 h-6">
-        </a>
-      </div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/swagata-sur?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" width="20"></a>
+      <a href="mailto:swagata.stats@gmail.com"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" width="20"></a>
+      <a href="https://www.instagram.com/swa_ga_taa?igsh=cnV4MTkxY3JndXln" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" width="20"></a>
+      <a href="https://github.com/swagata-sur20" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" width="20"></a>
     </div>
   </header>
 
-  <!-- Projects -->
-  <section id="projects" class="py-16 px-6 max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold text-cyan-300 mb-8 text-center">Featured Projects</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="proj-card bg-slate-800 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://via.placeholder.com/600x300?text=GenAI+PoC" alt="GenAI Project">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold">Generative AI PoC – Automated Anomaly Classification</h3>
-          <p class="mt-2 text-gray-300 text-sm">Developed an LLM-powered classification system using embeddings and clustering to automate anomaly mapping to risk domains. Reduced manual effort by 2–3 weeks.</p>
-        </div>
-        <div class="proj-overlay">
-          <a href="https://github.com/swagata-sur20/GenAI_Anomaly_Classification" target="_blank" class="bg-gradient-to-r from-purple-600 to-cyan-400 px-4 py-2 rounded-lg font-medium">View on GitHub</a>
-        </div>
-      </div>
-
-      <div class="proj-card bg-slate-800 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://via.placeholder.com/600x300?text=AML+Calibration" alt="AML Calibration">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold">AML Threshold Calibration</h3>
-          <p class="mt-2 text-gray-300 text-sm">Performed threshold optimization across multiple entities using statistical calibration. Improved detection accuracy while reducing alert volume by 25%.</p>
-        </div>
-        <div class="proj-overlay">
-          <a href="https://github.com/swagata-sur20/AML_Threshold_Calibration" target="_blank" class="bg-gradient-to-r from-purple-600 to-cyan-400 px-4 py-2 rounded-lg font-medium">View on GitHub</a>
-        </div>
-      </div>
-
-      <div class="proj-card bg-slate-800 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://via.placeholder.com/600x300?text=Sanction+Pipeline" alt="Sanction Pipeline">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold">Sanction Embargo Monitoring Pipeline</h3>
-          <p class="mt-2 text-gray-300 text-sm">Built end-to-end Kedro pipeline with CI/CD and Oozie scheduling. Designed Kibana dashboards to track KPIs and retrained model using Extra Trees Classifier.</p>
-        </div>
-        <div class="proj-overlay">
-          <a href="https://github.com/swagata-sur20/Sanction_Embargo_Monitoring" target="_blank" class="bg-gradient-to-r from-purple-600 to-cyan-400 px-4 py-2 rounded-lg font-medium">View on GitHub</a>
-        </div>
-      </div>
-
-      <div class="proj-card bg-slate-800 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://via.placeholder.com/600x300?text=Credit+Risk+Model" alt="Credit Risk Model">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold">Credit Risk Scoring Model</h3>
-          <p class="mt-2 text-gray-300 text-sm">Built Logistic Regression and Random Forest models for credit risk scoring with SHAP interpretability (AUC 0.92).</p>
-        </div>
-        <div class="proj-overlay">
-          <a href="https://github.com/swagata-sur20/Credit_Risk_Model" target="_blank" class="bg-gradient-to-r from-purple-600 to-cyan-400 px-4 py-2 rounded-lg font-medium">View on GitHub</a>
-        </div>
-      </div>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card">
+      <h3>Generative AI PoC — Automated Anomaly Classification</h3>
+      <p>Developed an LLM-powered system using embeddings, clustering, and rule-based logic to automate anomaly-to-domain mapping, reducing manual analysis time by 2–3 weeks.</p>
+    </div>
+    <div class="card">
+      <h3>SAS AML — Threshold Calibration</h3>
+      <p>Performed statistical calibration for AML thresholds across multiple entities to optimize alert quality and reduce false positives.</p>
+    </div>
+    <div class="card">
+      <h3>Sanction Embargo Monitoring Pipeline</h3>
+      <p>Built an end-to-end Kedro data pipeline with Oozie scheduling and Kibana dashboards monitoring 6+ KPIs for compliance model reliability.</p>
     </div>
   </section>
 
-  <!-- Experience -->
-  <section id="experience" class="py-16 px-6 max-w-5xl mx-auto relative">
-    <h2 class="text-3xl font-bold text-cyan-300 mb-8 text-center">Experience</h2>
-    <div class="timeline relative pl-10">
-      <div class="mb-10 relative">
-        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400"></div>
-        <h3 class="font-semibold text-lg">Associate Data Scientist – Société Générale</h3>
-        <p class="text-sm text-gray-400">Jul 2023 – Present | Bengaluru, India</p>
-        <ul class="list-disc ml-6 mt-2 text-gray-300 text-sm space-y-1">
-          <li>Developed end-to-end sanction monitoring pipeline using Kedro and Oozie scheduling.</li>
-          <li>Built Kibana dashboards for 6+ KPIs to detect data drift and model reliability issues.</li>
-          <li>Implemented Extra Trees model retraining workflow to reduce false positives.</li>
-        </ul>
-      </div>
-
-      <div class="mb-10 relative">
-        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400"></div>
-        <h3 class="font-semibold text-lg">Generative AI PoC – Automated Anomaly Classification</h3>
-        <p class="text-sm text-gray-400">2024 – Proof of Concept</p>
-        <ul class="list-disc ml-6 mt-2 text-gray-300 text-sm space-y-1">
-          <li>Integrated embeddings, clustering, and LLM prompting for rule-based anomaly classification.</li>
-          <li>Automated synthesis document creation, saving 2–3 analyst weeks per business unit.</li>
-        </ul>
-      </div>
-
-      <div class="relative">
-        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 to-cyan-400"></div>
-        <h3 class="font-semibold text-lg">AML Threshold Calibration</h3>
-        <p class="text-sm text-gray-400">2022 – 2023</p>
-        <ul class="list-disc ml-6 mt-2 text-gray-300 text-sm space-y-1">
-          <li>Performed AML scenario calibration and statistical validation for 30+ rules.</li>
-          <li>Reduced false positives by 25% across 16 entities using optimized thresholds.</li>
-        </ul>
-      </div>
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline-item">
+      <h3>Associate Data Scientist — Société Générale</h3>
+      <p>Worked on AML and sanctions monitoring systems, Generative AI POCs, and model reliability dashboards for compliance analytics.</p>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="py-16 px-6 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold text-cyan-300 mb-8 text-center">Skills</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div>
-        <p class="font-semibold mb-1">Python</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
-        <p class="font-semibold mt-4 mb-1">SQL / SAS</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
-        <p class="font-semibold mt-4 mb-1">Machine Learning / Modeling</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 88%;"></div></div>
-        <p class="font-semibold mt-4 mb-1">Data Visualization (Kibana / Power BI)</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
-      </div>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="card"><p>Python, SQL, SAS, Scikit-learn, LangChain, LLM APIs, Kedro, Oozie, Kibana, Power BI, Machine Learning, Generative AI</p></div>
+  </section>
 
-      <div>
-        <p class="font-semibold mb-1">Kedro / CI-CD / Oozie</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 75%;"></div></div>
-        <p class="font-semibold mt-4 mb-1">LangChain / LLMs</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 70%;"></div></div>
-        <p class="font-semibold mt-4 mb-1">Git / Deployment</p>
-        <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
-      </div>
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card">
+      <h3>M.Sc. in Statistics</h3>
+      <p>Comprehensive background in data modeling, inference, and applied analytics.</p>
     </div>
   </section>
 
-  <!-- Education -->
-  <section id="education" class="py-16 px-6 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold text-cyan-300 mb-8 text-center">Education</h2>
-    <div class="space-y-8">
-      <div>
-        <h3 class="font-semibold text-lg">Master of Science (Statistics)</h3>
-        <p class="text-sm text-gray-400">Presidency University, Kolkata — 2021</p>
-      </div>
-      <div>
-        <h3 class="font-semibold text-lg">Bachelor of Science (Statistics)</h3>
-        <p class="text-sm text-gray-400">University of Calcutta — 2019</p>
-      </div>
-    </div>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Let’s connect!</p>
+    <p><a href="mailto:swagata.stats@gmail.com">swagata.stats@gmail.com</a></p>
+    <p><a href="https://www.linkedin.com/in/swagata-sur" target="_blank">LinkedIn Profile</a></p>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-16 bg-gradient-to-r from-purple-700 to-cyan-500 text-center text-white">
-    <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
-    <p class="text-lg mb-6">Let’s connect for collaborations or opportunities!</p>
-    <div class="flex justify-center space-x-5">
-      <a href="mailto:swagata.stats@gmail.com" class="bg-white/20 px-5 py-3 rounded-full hover:bg-white/30 transition">Gmail</a>
-      <a href="https://www.linkedin.com/in/swagata-sur?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="bg-white/20 px-5 py-3 rounded-full hover:bg-white/30 transition">LinkedIn</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-slate-900 py-6 text-center text-gray-400">
-    <p>© 2025 Swagata Sur. All rights reserved.</p>
+  <footer>
+    © 2025 Swagata Sur
   </footer>
 
 </body>
