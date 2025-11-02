@@ -6,7 +6,7 @@
   <title>Swagata Sur — Associate Data Scientist</title>
 
   <style>
-    :root{
+    :root {
       --bg-top: #071124;
       --bg-bot: #0f1724;
       --muted: #9aa5b5;
@@ -15,66 +15,213 @@
       --accent: linear-gradient(90deg,#4f46e5,#06b6d4);
       --blue-pill: #2563eb;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;-webkit-font-smoothing:antialiased;}
-    body{color:var(--text);background:linear-gradient(180deg,var(--bg-top),var(--bg-bot));}
 
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 22px}
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    /* Nav */
-    nav{position:fixed;top:12px;left:0;right:0;z-index:60;display:flex;justify-content:center;pointer-events:none;}
-    nav .inner{pointer-events:auto;background:rgba(8,10,16,0.55);backdrop-filter:blur(6px);padding:8px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);}
-    nav a{color:var(--muted);margin:0 12px;font-size:0.95rem}
-    nav a:hover{color:#fff;opacity:0.98}
+    body {
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg-top), var(--bg-bot));
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 22px; }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 12px;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    nav .inner {
+      pointer-events: auto;
+      background: rgba(8,10,16,0.55);
+      backdrop-filter: blur(6px);
+      padding: 8px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    nav a {
+      color: var(--muted);
+      margin: 0 12px;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover { color: #fff; opacity: 0.98; }
 
     /* Hero */
-    header.hero{min-height:74vh;display:flex;align-items:center}
-    .hero-row{display:flex;gap:28px;align-items:center;width:100%}
-    .hero-left{flex:1;padding:40px 0}
-    .hero-right{width:320px;display:flex;align-items:center;justify-content:center;padding:20px}
-    .photo-wrap{width:260px;height:260px;border-radius:50%;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;box-shadow:0 20px 60px rgba(2,6,23,0.6);border:6px solid rgba(255,255,255,0.03)}
-    .photo-wrap img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-    h1.title{font-size:3rem;line-height:1.02;margin:0 0 8px;font-weight:700}
-    p.tag{margin:0 0 16px;color:var(--muted);font-size:1rem}
-    .accent{height:6px;width:180px;border-radius:12px;margin:16px 0 22px;background:var(--accent);position:relative;overflow:hidden}
-    .accent::after{content:"";position:absolute;left:-40%;top:-30%;width:80%;height:200%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.08),transparent 25%);animation:glow 4.5s linear infinite}
-    @keyframes glow{0%{transform:translateX(0)}50%{transform:translateX(140%)}100%{transform:translateX(0)}}
+    header.hero {
+      min-height: 74vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-row {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-left { flex: 1; padding: 40px 0; }
+    .hero-right { width: 320px; display: flex; align-items: center; justify-content: center; padding: 20px; }
+
+    .photo-wrap {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 60px rgba(2,6,23,0.6);
+      border: 6px solid rgba(255,255,255,0.03);
+    }
+
+    .photo-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+    h1.title { font-size: 3rem; line-height: 1.02; margin: 0 0 8px; font-weight: 700; }
+    p.tag { margin: 0 0 16px; color: var(--muted); font-size: 1rem; }
+
+    .accent {
+      height: 6px;
+      width: 180px;
+      border-radius: 12px;
+      margin: 16px 0 22px;
+      background: var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .accent::after {
+      content: "";
+      position: absolute;
+      left: -40%;
+      top: -30%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 25%);
+      animation: glow 4.5s linear infinite;
+    }
+
+    @keyframes glow {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(140%); }
+      100% { transform: translateX(0); }
+    }
 
     /* Socials */
-    .social-row{display:flex;gap:12px;margin-top:8px}
-    .sbtn{width:48px;height:48px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1px solid rgba(255,255,255,0.03);transition:transform .16s ease,box-shadow .16s ease}
-    .sbtn:hover{transform:translateY(-6px) scale(1.06);box-shadow:0 10px 30px rgba(59,130,246,0.08)}
-    .sbtn svg{width:20px;height:20px;opacity:0.95;fill:currentColor}
+    .social-row { display: flex; gap: 12px; margin-top: 8px; }
+    .sbtn {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.03);
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .sbtn:hover { transform: translateY(-6px) scale(1.06); box-shadow: 0 10px 30px rgba(59,130,246,0.08); }
+    .sbtn svg { width: 20px; height: 20px; opacity: 0.95; fill: currentColor; }
 
-    section{padding:70px 0}
-    h2.section{font-size:1.3rem;margin:0 0 20px;color:#e6eef6;text-align:center}
+    /* Sections */
+    section { padding: 80px 0; }
+    h2.section {
+      font-size: 1.3rem;
+      margin: 0 0 20px;
+      color: #e6eef6;
+      text-align: left;
+    }
 
-    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);max-width:900px;margin:0 auto}
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.03);
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
     /* Key Skills */
-    .skills-list{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
-    .skill-pill{background:var(--blue-pill);padding:8px 18px;border-radius:999px;font-size:0.95rem;color:white;font-weight:500;transition:all 0.2s ease}
-    .skill-pill:hover{background:#3b82f6;transform:translateY(-3px)}
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+      margin-top: 10px;
+    }
+
+    .skill-pill {
+      background: var(--blue-pill);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      color: white;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .skill-pill:hover { background: #3b82f6; transform: translateY(-3px); }
+
+    .experience-sub {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
 
     /* Contact */
-    .contact-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
-    .contact-btn{padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted);cursor:pointer}
-    .contact-btn:hover{color:#fff;transform:translateY(-4px)}
+    .contact-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-    footer{text-align:center;padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
+    .contact-btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.03);
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .contact-btn:hover { color: #fff; transform: translateY(-4px); }
+
+    footer {
+      text-align: center;
+      padding: 28px 0;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.02);
+    }
 
     @media(max-width:880px){
-      .hero-row{flex-direction:column-reverse;text-align:center}
-      h1.title{font-size:2rem}
-      .photo-wrap{width:200px;height:200px}
+      .hero-row { flex-direction: column-reverse; text-align: center; }
+      h1.title { font-size: 2rem; }
+      .photo-wrap { width: 200px; height: 200px; }
+      h2.section { text-align: center; }
     }
   </style>
 </head>
+
 <body>
 
+  <!-- NAV -->
   <nav>
     <div class="inner container" style="display:flex;align-items:center;gap:18px;justify-content:center">
+      <a href="#about">About Me</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
@@ -82,6 +229,7 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <header class="hero">
     <div class="container hero-row">
       <div class="hero-left">
@@ -111,6 +259,19 @@
   </header>
 
   <main>
+    <!-- ABOUT -->
+    <section id="about" class="container reveal">
+      <h2 class="section">About Me</h2>
+      <div class="card">
+        <p>
+          I’m an Associate Data Scientist with hands-on experience in developing analytics solutions within the AML and compliance space. I hold a postgraduate degree in Statistics from the University of Delhi and currently work at a leading French bank, where I focus on combining statistical modeling with AI to drive impactful, data-driven solutions. I’ve worked on projects spanning threshold calibration, Generative AI–based anomaly classification, and sanctions monitoring pipelines using Kedro, CI/CD, and Kibana.
+        </p>
+        <p>
+          Outside of work, I enjoy playing chess, traveling to new places, exploring diverse cuisines, and cooking — activities that fuel both my curiosity and creativity.
+        </p>
+      </div>
+    </section>
+
     <!-- Key Skills -->
     <section id="skills" class="container reveal">
       <h2 class="section">Key Skills</h2>
@@ -128,11 +289,14 @@
       </div>
     </section>
 
-    <!-- Experience -->
+    <!-- EXPERIENCE -->
     <section id="experience" class="container reveal">
-      <h2 class="section">Société Générale</h2>
+      <h2 class="section">Experience</h2>
       <div class="card">
-        <p>Worked on multiple data science and analytics projects within the AML and compliance domain, including threshold calibration for SAS AML, a Generative AI Proof of Concept for automated anomaly classification, and an end-to-end sanction-embargo monitoring pipeline with Kedro, CI/CD, and Kibana dashboards.</p>
+        <div class="experience-sub">Société Générale</div>
+        <p>
+          Worked on multiple data science and analytics projects within the AML and compliance domain, including threshold calibration for SAS AML, a Generative AI Proof of Concept for automated anomaly classification, and an end-to-end sanction-embargo monitoring pipeline with Kedro, CI/CD, and Kibana dashboards.
+        </p>
       </div>
     </section>
 
@@ -140,15 +304,14 @@
     <section id="education" class="container reveal">
       <h2 class="section">Education</h2>
       <div class="card">
-        <p><b>M.Sc. in Statistics</b> — Presidency University, Kolkata (2021)</p>
-        <p><b>B.Sc. in Statistics</b> — University of Calcutta (2019)</p>
+        <p><b>M.Sc. in Statistics</b> — University of Delhi, Delhi (2023)</p>
+        <p><b>B.Sc. in Statistics</b> — University of Calcutta (2021)</p>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="container reveal" style="text-align:center">
+    <section id="contact" class="container reveal">
       <h2 class="section">Contact</h2>
-      <p class="meta">I'm open to discussions and opportunities — feel free to reach out.</p>
       <div class="contact-row">
         <a class="contact-btn" href="mailto:swagata.stats@gmail.com">Email: swagata.stats@gmail.com</a>
         <a class="contact-btn" href="https://www.linkedin.com/in/swagata-sur" target="_blank">LinkedIn</a>
@@ -157,7 +320,7 @@
     </section>
   </main>
 
-  <footer>© 2025 Swagata Sur — Built with HTML & GitHub Pages</footer>
+  <footer>© 2025 Swagata Sur — All Rights Reserved</footer>
 
   <script>
     function revealOnScroll(){
