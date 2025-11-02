@@ -11,26 +11,34 @@
       --bg-bot: #0f1724;
       --muted: #9aa5b5;
       --text: #e6eef6;
-      --card: rgba(255,255,255,0.02);
-      --accent: linear-gradient(90deg,#4f46e5,#06b6d4);
+      --card: rgba(255, 255, 255, 0.02);
+      --accent: linear-gradient(90deg, #4f46e5, #06b6d4);
       --blue-pill: #2563eb;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     html, body {
-      height: 100%;
       margin: 0;
+      height: 100%;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg-top), var(--bg-bot));
       -webkit-font-smoothing: antialiased;
     }
 
-    body {
-      color: var(--text);
-      background: linear-gradient(180deg, var(--bg-top), var(--bg-bot));
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    a { color: inherit; text-decoration: none; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 22px; }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
 
     /* Navigation */
     nav {
@@ -46,11 +54,11 @@
 
     nav .inner {
       pointer-events: auto;
-      background: rgba(8,10,16,0.55);
+      background: rgba(8, 10, 16, 0.55);
       backdrop-filter: blur(6px);
       padding: 8px 14px;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.03);
+      border: 1px solid rgba(255, 255, 255, 0.03);
     }
 
     nav a {
@@ -59,9 +67,12 @@
       font-size: 0.95rem;
     }
 
-    nav a:hover { color: #fff; opacity: 0.98; }
+    nav a:hover {
+      color: #fff;
+      opacity: 0.98;
+    }
 
-    /* Hero */
+    /* Hero Section */
     header.hero {
       min-height: 74vh;
       display: flex;
@@ -75,8 +86,18 @@
       width: 100%;
     }
 
-    .hero-left { flex: 1; padding: 40px 0; }
-    .hero-right { width: 320px; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .hero-left {
+      flex: 1;
+      padding: 40px 0;
+    }
+
+    .hero-right {
+      width: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
     .photo-wrap {
       width: 260px;
@@ -86,14 +107,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 20px 60px rgba(2,6,23,0.6);
+      box-shadow: 0 20px 60px rgba(2, 6, 23, 0.6);
       border: 6px solid rgba(255,255,255,0.03);
     }
 
-    .photo-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
 
-    h1.title { font-size: 3rem; line-height: 1.02; margin: 0 0 8px; font-weight: 700; }
-    p.tag { margin: 0 0 16px; color: var(--muted); font-size: 1rem; }
+    h1.title {
+      font-size: 3rem;
+      line-height: 1.02;
+      margin: 0 0 8px;
+      font-weight: 700;
+    }
+
+    p.tag {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
 
     .accent {
       height: 6px;
@@ -105,52 +141,49 @@
       overflow: hidden;
     }
 
-    .accent::after {
-      content: "";
-      position: absolute;
-      left: -40%;
-      top: -30%;
-      width: 80%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 25%);
-      animation: glow 4.5s linear infinite;
-    }
-
-    @keyframes glow {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(140%); }
-      100% { transform: translateX(0); }
-    }
-
     /* Socials */
-    .social-row { display: flex; gap: 12px; margin-top: 8px; }
+    .social-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
     .sbtn {
-      width: 48px; height: 48px;
+      width: 48px;
+      height: 48px;
       border-radius: 10px;
-      display: inline-flex; align-items: center; justify-content: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       background: var(--card);
-      border: 1px solid rgba(255,255,255,0.03);
+      border: 1px solid rgba(255, 255, 255, 0.03);
       transition: transform .16s ease, box-shadow .16s ease;
     }
-    .sbtn:hover { transform: translateY(-6px) scale(1.06); box-shadow: 0 10px 30px rgba(59,130,246,0.08); }
-    .sbtn svg { width: 20px; height: 20px; opacity: 0.95; fill: currentColor; }
 
-    /* Sections */
-    section { padding: 80px 0; }
+    .sbtn:hover {
+      transform: translateY(-6px) scale(1.06);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.08);
+    }
+
+    /* Section styles */
+    section {
+      padding: 100px 0 70px 0;
+    }
+
     h2.section {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       margin: 0 0 20px;
       color: #e6eef6;
       text-align: left;
+      font-weight: 600;
     }
 
     .card {
       background: var(--card);
-      padding: 20px;
+      padding: 22px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.03);
       max-width: 900px;
-      margin: 0 auto;
     }
 
     /* Key Skills */
@@ -158,7 +191,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      justify-content: flex-start;
       margin-top: 10px;
     }
 
@@ -172,53 +204,68 @@
       transition: all 0.2s ease;
     }
 
-    .skill-pill:hover { background: #3b82f6; transform: translateY(-3px); }
-
-    .experience-sub {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+    .skill-pill:hover {
+      background: #3b82f6;
+      transform: translateY(-3px);
     }
 
     /* Contact */
-    .contact-row {
+    .contact-wrapper {
       display: flex;
-      gap: 12px;
-      align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
-      justify-content: center;
+      gap: 40px;
     }
 
-    .contact-btn {
-      padding: 10px 14px;
-      border-radius: 10px;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.03);
-      color: var(--muted);
-      cursor: pointer;
+    .contact-column {
+      flex: 1;
+      min-width: 280px;
     }
 
-    .contact-btn:hover { color: #fff; transform: translateY(-4px); }
+    .contact-column h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
 
     footer {
       text-align: center;
       padding: 28px 0;
       color: var(--muted);
       border-top: 1px solid rgba(255,255,255,0.02);
+      margin-top: 40px;
     }
 
-    @media(max-width:880px){
+    /* Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 880px) {
       .hero-row { flex-direction: column-reverse; text-align: center; }
+      .hero-left { text-align: center; }
       h1.title { font-size: 2rem; }
       .photo-wrap { width: 200px; height: 200px; }
       h2.section { text-align: center; }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- NAV -->
+  <!-- Navbar -->
   <nav>
     <div class="inner container" style="display:flex;align-items:center;gap:18px;justify-content:center">
       <a href="#about">About Me</a>
@@ -229,7 +276,7 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- Hero -->
   <header class="hero">
     <div class="container hero-row">
       <div class="hero-left">
@@ -237,100 +284,101 @@
         <div class="accent"></div>
         <p class="tag">Associate Data Scientist | Generative AI | Analytics | ML</p>
         <div class="social-row">
-          <a class="sbtn" href="https://www.linkedin.com/in/swagata-sur" target="_blank" title="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88071 3.86071 6 2.48 6C1.09929 6 0 4.88071 0 3.5C0 2.11929 1.09929 1 2.48 1C3.86071 1 4.98 2.11929 4.98 3.5ZM0.5 8.99999H4.46V23H0.5V8.99999ZM8.86 8.99999H12.66V10.699H12.71C13.28 9.69999 14.76 8.78 16.76 8.78C21.06 8.78 22 11.329 22 15.65V23H18.05V16.62C18.05 14.55 17.92 12.06 15.2 12.06C12.45 12.06 12.02 13.99 12.02 16.45V23H8.06V8.99999H8.86Z"/></svg>
-          </a>
-          <a class="sbtn" href="mailto:swagata.stats@gmail.com" title="Email">
-            <svg viewBox="0 0 24 24"><path d="M2.01 4C1.448 4 1 4.447 1 5.01V19C1 19.553 1.448 20 2.01 20H22.01C22.572 20 23.01 19.553 23.01 19V5.01C23.01 4.447 22.572 4 22.01 4H2.01ZM2.38 6.58L11.03 12.94C11.22 13.07 11.44 13.13 11.65 13.13C11.86 13.13 12.07 13.07 12.26 12.94L20.86 6.59H2.38Z"/></svg>
-          </a>
-          <a class="sbtn" href="https://github.com/swagata-sur20" target="_blank" title="GitHub">
-            <svg viewBox="0 0 24 24"><path d="M12 .297a12 12 0 0 0-3.793 23.408c.6.112.793-.26.793-.577 0-.285-.01-1.04-.015-2.04-3.226.7-3.905-1.55-3.905-1.55-.528-1.34-1.288-1.697-1.288-1.697-1.053-.72.08-.706.08-.706 1.164.082 1.776 1.197 1.776 1.197 1.036 1.77 2.72 1.258 3.387.963.105-.747.405-1.258.737-1.547-2.576-.293-5.285-1.287-5.285-5.73 0-1.266.45-2.303 1.188-3.116-.118-.293-.518-1.47.113-3.064 0 0 .968-.31 3.17 1.188a11.02 11.02 0 0 1 2.888-.388c.98.004 1.97.132 2.888.388 2.2-1.498 3.167-1.188 3.167-1.188.632 1.594.232 2.771.114 3.064.74.813 1.188 1.85 1.188 3.116 0 4.455-2.713 5.434-5.296 5.72.414.355.783 1.054.783 2.126 0 1.536-.014 2.773-.014 3.149 0 .32.19.694.8.576A12.001 12.001 0 0 0 12 .297z"/></svg>
-          </a>
-          <a class="sbtn" href="https://www.instagram.com/swa_ga_taa" target="_blank" title="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.055 1.97.247 2.43.412.61.222 1.05.488 1.51.944.46.46.72.91.94 1.51.165.46.357 1.26.412 2.43.058 1.27.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.055 1.17-.247 1.97-.412 2.43-.223.61-.488 1.05-.944 1.51-.46.46-.91.72-1.51.94-.46.165-1.26.357-2.43.412-1.27.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.055-1.97-.247-2.43-.412-.61-.223-1.05-.488-1.51-.944-.46-.46-.72-.91-.94-1.51-.165-.46-.357-1.26-.412-2.43C2.172 15.58 2.16 15.2 2.16 12s.012-3.584.07-4.85c.055-1.17.247-1.97.412-2.43.223-.61.488-1.05.944-1.51.46-.46.91-.72 1.51-.94.46-.165 1.26-.357 2.43-.412C8.416 2.172 8.8 2.16 12 2.16z"/></svg>
-          </a>
+          <a class="sbtn" href="https://www.linkedin.com/in/swagata-sur" target="_blank" title="LinkedIn">🔗</a>
+          <a class="sbtn" href="mailto:swagata.stats@gmail.com" title="Email">📧</a>
+          <a class="sbtn" href="https://github.com/swagata-sur20" target="_blank" title="GitHub">🐙</a>
+          <a class="sbtn" href="https://www.instagram.com/swa_ga_taa" target="_blank" title="Instagram">📸</a>
         </div>
       </div>
-
       <div class="hero-right">
-        <div class="photo-wrap"><img src="Swagata-sur.jpg" alt="Swagata Sur"></div>
+        <div class="photo-wrap">
+          <img src="Swagata-sur.jpg" alt="Swagata Sur">
+        </div>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- ABOUT -->
-    <section id="about" class="container reveal">
-      <h2 class="section">About Me</h2>
-      <div class="card">
-        <p>
-          I’m an Associate Data Scientist with hands-on experience in developing analytics solutions within the AML and compliance space. I hold a postgraduate degree in Statistics from the University of Delhi and currently work at a leading French bank, where I focus on combining statistical modeling with AI to drive impactful, data-driven solutions. I’ve worked on projects spanning threshold calibration, Generative AI–based anomaly classification, and sanctions monitoring pipelines using Kedro, CI/CD, and Kibana.
-        </p>
-        <p>
-          Outside of work, I enjoy playing chess, traveling to new places, exploring diverse cuisines, and cooking — activities that fuel both my curiosity and creativity.
-        </p>
-      </div>
-    </section>
+  <!-- About -->
+  <section id="about" class="container reveal">
+    <h2 class="section">About Me</h2>
+    <div class="card">
+      <p>
+        I’m an Associate Data Scientist with hands-on experience in developing analytics solutions within the AML and compliance space. I hold a postgraduate degree in Statistics from the University of Delhi and currently work at a leading French bank, where I focus on combining statistical modeling with AI to drive impactful, data-driven solutions. I’ve worked on projects spanning threshold calibration, Generative AI–based anomaly classification, and sanctions monitoring pipelines using Kedro, CI/CD, and Kibana.
+      </p>
+      <p>
+        Outside of work, I enjoy playing chess, traveling to new places, exploring diverse cuisines, and cooking — activities that fuel both my curiosity and creativity.
+      </p>
+    </div>
+  </section>
 
-    <!-- Key Skills -->
-    <section id="skills" class="container reveal">
-      <h2 class="section">Key Skills</h2>
-      <div class="skills-list">
-        <div class="skill-pill">Machine Learning</div>
-        <div class="skill-pill">Generative AI</div>
-        <div class="skill-pill">Python</div>
-        <div class="skill-pill">SQL</div>
-        <div class="skill-pill">SAS</div>
-        <div class="skill-pill">LangChain</div>
-        <div class="skill-pill">Kedro</div>
-        <div class="skill-pill">CI/CD</div>
-        <div class="skill-pill">Kibana</div>
-        <div class="skill-pill">Power BI</div>
-      </div>
-    </section>
+  <!-- Skills -->
+  <section id="skills" class="container reveal">
+    <h2 class="section">Key Skills</h2>
+    <div class="skills-list">
+      <div class="skill-pill">Machine Learning</div>
+      <div class="skill-pill">Generative AI</div>
+      <div class="skill-pill">Python</div>
+      <div class="skill-pill">SQL</div>
+      <div class="skill-pill">SAS</div>
+      <div class="skill-pill">LangChain</div>
+      <div class="skill-pill">Kedro</div>
+      <div class="skill-pill">CI/CD</div>
+      <div class="skill-pill">Kibana</div>
+      <div class="skill-pill">Power BI</div>
+    </div>
+  </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="container reveal">
-      <h2 class="section">Experience</h2>
-      <div class="card">
-        <div class="experience-sub">Société Générale</div>
-        <p>
-          Worked on multiple data science and analytics projects within the AML and compliance domain, including threshold calibration for SAS AML, a Generative AI Proof of Concept for automated anomaly classification, and an end-to-end sanction-embargo monitoring pipeline with Kedro, CI/CD, and Kibana dashboards.
-        </p>
-      </div>
-    </section>
+  <!-- Experience -->
+  <section id="experience" class="container reveal">
+    <h2 class="section">Experience</h2>
+    <div class="card">
+      <h3 style="margin-top:0;">Société Générale</h3>
+      <p>
+        Worked on multiple data science and analytics projects within the AML and compliance domain, including threshold calibration for SAS AML, a Generative AI Proof of Concept for automated anomaly classification, and an end-to-end sanction-embargo monitoring pipeline with Kedro, CI/CD, and Kibana dashboards.
+      </p>
+    </div>
+  </section>
 
-    <!-- Education -->
-    <section id="education" class="container reveal">
-      <h2 class="section">Education</h2>
-      <div class="card">
-        <p><b>M.Sc. in Statistics</b> — University of Delhi, Delhi (2023)</p>
-        <p><b>B.Sc. in Statistics</b> — University of Calcutta (2021)</p>
-      </div>
-    </section>
+  <!-- Education -->
+  <section id="education" class="container reveal">
+    <h2 class="section">Education</h2>
+    <div class="card">
+      <p><b>M.Sc. in Statistics</b> — University of Delhi, Delhi (2023)</p>
+      <p><b>B.Sc. in Statistics</b> — University of Calcutta (2021)</p>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="container reveal">
-      <h2 class="section">Contact</h2>
-      <div class="contact-row">
-        <a class="contact-btn" href="mailto:swagata.stats@gmail.com">Email: swagata.stats@gmail.com</a>
-        <a class="contact-btn" href="https://www.linkedin.com/in/swagata-sur" target="_blank">LinkedIn</a>
-        <a class="contact-btn" href="https://github.com/swagata-sur20" target="_blank">GitHub</a>
+  <!-- Contact -->
+  <section id="contact" class="container reveal">
+    <div class="contact-wrapper">
+      <div class="contact-column">
+        <h3>Connect With Me</h3>
+        <div class="contact-socials">
+          <a class="sbtn" href="https://www.linkedin.com/in/swagata-sur" target="_blank" title="LinkedIn">🔗</a>
+          <a class="sbtn" href="https://github.com/swagata-sur20" target="_blank" title="GitHub">🐙</a>
+          <a class="sbtn" href="https://www.instagram.com/swa_ga_taa" target="_blank" title="Instagram">📸</a>
+        </div>
       </div>
-    </section>
-  </main>
+      <div class="contact-column">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:swagata.stats@gmail.com">swagata.stats@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
 
-  <footer>© 2025 Swagata Sur — All Rights Reserved</footer>
+  <footer>
+    © 2025 Swagata Sur. All rights reserved.
+  </footer>
 
   <script>
-    function revealOnScroll(){
-      document.querySelectorAll('.reveal').forEach(el=>{
-        const rect=el.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 80) el.classList.add('show');
+    function revealOnScroll() {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) el.classList.add('show');
       });
     }
-    window.addEventListener('load',revealOnScroll);
-    window.addEventListener('scroll',revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+    window.addEventListener('scroll', revealOnScroll);
   </script>
 </body>
 </html>
