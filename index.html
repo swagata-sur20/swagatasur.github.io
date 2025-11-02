@@ -1,259 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Swagata Sur | Data Scientist</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Swagata Sur — Associate Data Scientist</title>
 
+  <!-- Minimal styles: dark, clean, Tatha-like layout -->
   <style>
-    :root {
-      --bg1: #0b1220;
-      --bg2: #1a2233;
-      --text: #e4ebf5;
+    :root{
+      --bg-top: #071124;   /* deep navy */
+      --bg-bot: #0f1724;   /* darker blue-gray */
       --muted: #9aa5b5;
-      --accent1: #3b82f6;
-      --accent2: #7c3aed;
-      --card: rgba(255,255,255,0.04);
+      --text: #e6eef6;
+      --card: rgba(255,255,255,0.02);
+      --accent: linear-gradient(90deg,#4f46e5,#06b6d4);
     }
+    /* Basic reset */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    body{
+      color:var(--text);
+      background: linear-gradient(180deg,var(--bg-top),var(--bg-bot));
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 22px}
 
-    body {
-      margin: 0;
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      color: var(--text);
-      background: linear-gradient(180deg, var(--bg1), var(--bg2));
-      scroll-behavior: smooth;
-      overflow-x: hidden;
+    /* NAV */
+    nav{
+      position:fixed;top:12px;left:0;right:0;z-index:60;display:flex;justify-content:center;pointer-events:none;
     }
+    nav .inner{pointer-events:auto;background:rgba(8,10,16,0.55);backdrop-filter:blur(6px);padding:8px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);}
+    nav a{color:var(--muted);margin:0 12px;font-size:0.95rem}
+    nav a:hover{color:#fff;opacity:0.98}
 
-    a { color: inherit; text-decoration: none; }
+    /* HERO LAYOUT: left text, right photo */
+    header.hero{min-height:74vh;display:flex;align-items:center}
+    .hero-row{display:flex;gap:28px;align-items:center;width:100%}
+    .hero-left{flex:1;padding:40px 0}
+    .hero-right{width:320px;display:flex;align-items:center;justify-content:center;padding:20px}
+    /* profile photo */
+    .photo-wrap{width:260px;height:260px;border-radius:50%;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;box-shadow: 0 20px 60px rgba(2,6,23,0.6);border:6px solid rgba(255,255,255,0.03)}
+    .photo-wrap img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+    /* text */
+    h1.title{font-size:3rem;line-height:1.02;margin:0 0 8px;font-weight:700}
+    p.tag{margin:0 0 16px;color:var(--muted);font-size:1rem}
+    /* accent line under name like Tatha */
+    .accent{height:6px;width:180px;border-radius:12px;margin:16px 0 22px;background:linear-gradient(90deg,#4f46e5,#06b6d4);position:relative;overflow:hidden}
+    .accent::after{content:"";position:absolute;left:-40%;top:-30%;width:80%;height:200%;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 25%);animation:glow 4.5s linear infinite}
+    @keyframes glow{0%{transform:translateX(0)}50%{transform:translateX(140%)}100%{transform:translateX(0)}}
 
-    /* Sticky Nav */
-    nav {
-      position: fixed;
-      top: 15px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      z-index: 10;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 22px;
-      padding: 8px 18px;
-      background: rgba(15, 20, 35, 0.6);
-      border-radius: 12px;
-      backdrop-filter: blur(6px);
-    }
-    nav a {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    nav a:hover { color: #fff; }
+    /* socials row under hero text (left side) */
+    .social-row{display:flex;gap:12px;margin-top:8px}
+    .sbtn{width:48px;height:48px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1px solid rgba(255,255,255,0.03);transition:transform .16s ease,box-shadow .16s ease}
+    .sbtn:hover{transform:translateY(-6px) scale(1.06);box-shadow:0 10px 30px rgba(59,130,246,0.08)}
+    .sbtn svg{width:20px;height:20px;opacity:0.95;fill:currentColor}
 
-    /* Hero */
-    header {
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+    /* sections */
+    section{padding:70px 0}
+    h2.section{font-size:1.2rem;margin:0 0 18px;color:#e6eef6}
+    .two-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .proj-thumb{height:150px;border-radius:8px;overflow:hidden;background:#0b1220;margin-bottom:12px}
+    .proj-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .proj-title{font-weight:600;margin-bottom:6px}
+    .meta{color:var(--muted);font-size:0.95rem}
 
-    header img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid rgba(255,255,255,0.07);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-    }
+    /* timeline */
+    .timeline{position:relative;padding-left:18px}
+    .timeline .item{position:relative;padding:16px 0;border-left:2px solid rgba(255,255,255,0.03);margin-left:12px}
+    .timeline .item::before{content:"";position:absolute;left:-9px;top:16px;width:12px;height:12px;border-radius:50%;background:linear-gradient(90deg,#4f46e5,#06b6d4);box-shadow:0 8px 20px rgba(6,16,40,0.6)}
 
-    h1 {
-      margin-top: 20px;
-      font-size: 2.2rem;
-      font-weight: 700;
-    }
+    /* skills */
+    .skill-line{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .skill-name{width:160px;color:var(--muted)}
+    .bar{flex:1;height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,#4f46e5,#06b6d4);width:0;transition:width 1s ease}
 
-    .accent-line {
-      height: 5px;
-      width: 160px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      border-radius: 10px;
-      margin: 14px auto;
-      position: relative;
-      overflow: hidden;
-    }
-    .accent-line::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -40%;
-      width: 80%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
-      animation: moveGlow 4s linear infinite;
-    }
-    @keyframes moveGlow {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(140%); }
-      100% { transform: translateX(0); }
-    }
+    /* contact */
+    .contact-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
+    .contact-btn{padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted);cursor:pointer}
+    .contact-btn:hover{color:#fff;transform:translateY(-4px)}
 
-    p.tagline {
-      color: var(--muted);
-      font-size: 1rem;
-      margin: 10px 0 15px;
-    }
+    /* reveal animation */
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1;transform:none}
 
-    .socials {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
-
-    .socials a {
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      background: var(--card);
-      transition: all 0.2s ease;
-    }
-    .socials a:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(59,130,246,0.15);
-    }
-
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 20px;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-
-    .card h3 { margin: 0 0 10px; }
-    .card p { color: var(--muted); font-size: 0.95rem; }
-
-    .timeline-item {
-      border-left: 2px solid rgba(255,255,255,0.05);
-      padding-left: 20px;
-      margin-bottom: 25px;
-      position: relative;
-    }
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -8px;
-      top: 5px;
-      width: 10px;
-      height: 10px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      border-radius: 50%;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-
-    @media (max-width: 700px) {
-      header img { width: 120px; height: 120px; }
-      h1 { font-size: 1.8rem; }
-      section { padding: 60px 15px; }
+    /* responsive */
+    @media (max-width: 880px){
+      .hero-row{flex-direction:column-reverse;align-items:center;text-align:center}
+      .hero-right{width:100%}
+      .hero-left{padding:24px 0}
+      .two-grid{grid-template-columns:1fr}
+      .photo-wrap{width:200px;height:200px}
+      h1.title{font-size:2rem}
     }
   </style>
 </head>
 <body>
 
+  <!-- NAV (minimal sticky centered) -->
   <nav>
-    <ul>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="inner container" style="display:flex;align-items:center;gap:18px;justify-content:center">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
-  <header>
-    <img src="Swagata-sur.jpg" alt="Swagata Sur">
-    <h1>Swagata Sur</h1>
-    <div class="accent-line"></div>
-    <p class="tagline">Data Scientist | AML & Compliance Analytics | Generative AI</p>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-row">
+      <!-- left: intro -->
+      <div class="hero-left">
+        <h1 class="title">Hi, I’m <span style="color:#fff">Swagata Sur</span></h1>
+        <div class="accent" aria-hidden="true"></div>
+        <p class="tag">Associate Data Scientist | Generative AI | Analytics | ML</p>
 
-    <div class="socials">
-      <a href="https://www.linkedin.com/in/swagata-sur?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" width="20"></a>
-      <a href="mailto:swagata.stats@gmail.com"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" width="20"></a>
-      <a href="https://www.instagram.com/swa_ga_taa?igsh=cnV4MTkxY3JndXln" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" width="20"></a>
-      <a href="https://github.com/swagata-sur20" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" width="20"></a>
+        <div class="social-row" aria-hidden="false">
+          <a class="sbtn" href="https://www.linkedin.com/in/swagata-sur?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" title="LinkedIn">
+            <!-- LinkedIn SVG -->
+            <svg viewBox="0 0 24 24" fill="#e6eef6" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88071 3.86071 6 2.48 6C1.09929 6 0 4.88071 0 3.5C0 2.11929 1.09929 1 2.48 1C3.86071 1 4.98 2.11929 4.98 3.5ZM0.5 8.99999H4.46V23H0.5V8.99999ZM8.86 8.99999H12.66V10.699H12.71C13.28 9.69999 14.76 8.78 16.76 8.78C21.06 8.78 22 11.329 22 15.65V23H18.05V16.62C18.05 14.55 17.92 12.06 15.2 12.06C12.45 12.06 12.02 13.99 12.02 16.45V23H8.06V8.99999H8.86Z"/></svg>
+          </a>
+
+          <a class="sbtn" href="mailto:swagata.stats@gmail.com" title="Email">
+            <svg viewBox="0 0 24 24" fill="#e6eef6" xmlns="http://www.w3.org/2000/svg"><path d="M2.01 4C1.448 4 1 4.447 1 5.01V19C1 19.553 1.448 20 2.01 20H22.01C22.572 20 23.01 19.553 23.01 19V5.01C23.01 4.447 22.572 4 22.01 4H2.01ZM2.38 6.58L11.03 12.94C11.22 13.07 11.44 13.13 11.65 13.13C11.86 13.13 12.07 13.07 12.26 12.94L20.86 6.59H2.38Z"/></svg>
+          </a>
+
+          <a class="sbtn" href="https://www.instagram.com/swa_ga_taa?igsh=cnV4MTkxY3JndXln" target="_blank" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="#e6eef6" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.055 1.97.247 2.43.412.61.222 1.05.488 1.51.944.46.46.72.91.94 1.51.165.46.357 1.26.412 2.43.058 1.27.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.055 1.17-.247 1.97-.412 2.43-.223.61-.488 1.05-.944 1.51-.46.46-.91.72-1.51.94-.46.165-1.26.357-2.43.412-1.27.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.055-1.97-.247-2.43-.412-.61-.223-1.05-.488-1.51-.944-.46-.46-.72-.91-.94-1.51-.165-.46-.357-1.26-.412-2.43C2.172 15.58 2.16 15.2 2.16 12s.012-3.584.07-4.85c.055-1.17.247-1.97.412-2.43.223-.61.488-1.05.944-1.51.46-.46.91-.72 1.51-.94.46-.165 1.26-.357 2.43-.412C8.416 2.172 8.8 2.16 12 2.16zM12 0C8.74 0 8.332.012 7.052.07 5.77.128 4.888.326 4.1.6c-.82.29-1.51.67-2.2 1.36C1.79 2.88 1.41 3.57 1.12 4.39c-.274.79-.472 1.67-.53 2.95C.012 8.668 0 9.077 0 12c0 2.923.012 3.332.07 4.612.058 1.28.256 2.16.53 2.95.29.82.67 1.51 1.36 2.2.69.69 1.38 1.07 2.2 1.36.79.274 1.67.472 2.95.53 1.28.058 1.69.07 4.61.07s3.332-.012 4.612-.07c1.28-.058 2.16-.256 2.95-.53.82-.29 1.51-.67 2.2-1.36.69-.69 1.07-1.38 1.36-2.2.274-.79.472-1.67.53-2.95.058-1.28.07-1.69.07-4.61s-.012-3.332-.07-4.612c-.058-1.28-.256-2.16-.53-2.95-.29-.82-.67-1.51-1.36-2.2-.69-.69-1.38-1.07-2.2-1.36-.79-.274-1.67-.472-2.95-.53C15.332.012 14.923 0 12 0z"/></svg>
+          </a>
+
+          <a class="sbtn" href="https://github.com/swagata-sur20" target="_blank" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="#e6eef6" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297a12 12 0 0 0-3.793 23.408c.6.112.793-.26.793-.577 0-.285-.01-1.04-.015-2.04-3.226.7-3.905-1.55-3.905-1.55-.528-1.34-1.288-1.697-1.288-1.697-1.053-.72.08-.706.08-.706 1.164.082 1.776 1.197 1.776 1.197 1.036 1.77 2.72 1.258 3.387.963.105-.747.405-1.258.737-1.547-2.576-.293-5.285-1.287-5.285-5.73 0-1.266.45-2.303 1.188-3.116-.118-.293-.518-1.47.113-3.064 0 0 .968-.31 3.17 1.188a11.02 11.02 0 0 1 2.888-.388c.98.004 1.97.132 2.888.388 2.2-1.498 3.167-1.188 3.167-1.188.632 1.594.232 2.771.114 3.064.74.813 1.188 1.85 1.188 3.116 0 4.455-2.713 5.434-5.296 5.72.414.355.783 1.054.783 2.126 0 1.536-.014 2.773-.014 3.149 0 .32.19.694.8.576A12.001 12.001 0 0 0 12 .297z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- right: photo -->
+      <div class="hero-right">
+        <div class="photo-wrap">
+          <img src="Swagata-sur.jpg" alt="Swagata Sur">
+        </div>
+      </div>
     </div>
   </header>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="card">
-      <h3>Generative AI PoC — Automated Anomaly Classification</h3>
-      <p>Developed an LLM-powered system using embeddings, clustering, and rule-based logic to automate anomaly-to-domain mapping, reducing manual analysis time by 2–3 weeks.</p>
-    </div>
-    <div class="card">
-      <h3>SAS AML — Threshold Calibration</h3>
-      <p>Performed statistical calibration for AML thresholds across multiple entities to optimize alert quality and reduce false positives.</p>
-    </div>
-    <div class="card">
-      <h3>Sanction Embargo Monitoring Pipeline</h3>
-      <p>Built an end-to-end Kedro data pipeline with Oozie scheduling and Kibana dashboards monitoring 6+ KPIs for compliance model reliability.</p>
-    </div>
-  </section>
+  <!-- MAIN CONTENT -->
+  <main>
+    <section id="projects" class="container reveal">
+      <h2 class="section">Projects</h2>
+      <div class="two-grid">
+        <div class="card">
+          <div class="proj-thumb"><img src="https://via.placeholder.com/800x400?text=GenAI+PoC" alt="GenAI"></div>
+          <div class="proj-title">Generative AI PoC — Automated Anomaly Classification</div>
+          <div class="meta">Embeddings + clustering + LLM prompting to automate anomaly-to-domain mapping. Generated synthesis docs per business unit and cut analyst effort by 2–3 weeks.</div>
+        </div>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="timeline-item">
-      <h3>Associate Data Scientist — Société Générale</h3>
-      <p>Worked on AML and sanctions monitoring systems, Generative AI POCs, and model reliability dashboards for compliance analytics.</p>
-    </div>
-  </section>
+        <div class="card">
+          <div class="proj-thumb"><img src="https://via.placeholder.com/800x400?text=AML+Calibration" alt="AML"></div>
+          <div class="proj-title">SAS AML — Threshold Calibration</div>
+          <div class="meta">Statistical calibration for transaction monitoring thresholds across entities; reduced false positives and improved detection quality.</div>
+        </div>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="card"><p>Python, SQL, SAS, Scikit-learn, LangChain, LLM APIs, Kedro, Oozie, Kibana, Power BI, Machine Learning, Generative AI</p></div>
-  </section>
+        <div class="card">
+          <div class="proj-thumb"><img src="https://via.placeholder.com/800x400?text=Sanction+Monitoring" alt="Sanction"></div>
+          <div class="proj-title">Sanction Embargo Monitoring Pipeline</div>
+          <div class="meta">Kedro-based pipeline with Oozie scheduling and Kibana dashboards for 6+ KPIs; automated retraining for false-positive reduction.</div>
+        </div>
 
-  <section id="education">
-    <h2>Education</h2>
-    <div class="card">
-      <h3>M.Sc. in Statistics</h3>
-      <p>Comprehensive background in data modeling, inference, and applied analytics.</p>
-    </div>
-  </section>
+        <div class="card">
+          <div class="proj-thumb"><img src="https://via.placeholder.com/800x400?text=Credit+Risk" alt="Credit"></div>
+          <div class="proj-title">Credit Risk Scoring Model</div>
+          <div class="meta">Logistic regression & Random Forest models with SHAP interpretability (AUC ~0.92).</div>
+        </div>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Let’s connect!</p>
-    <p><a href="mailto:swagata.stats@gmail.com">swagata.stats@gmail.com</a></p>
-    <p><a href="https://www.linkedin.com/in/swagata-sur" target="_blank">LinkedIn Profile</a></p>
-  </section>
+    <section id="experience" class="container reveal">
+      <h2 class="section">Experience</h2>
+      <div class="timeline">
+        <div class="item">
+          <div class="timeline-item">
+            <div style="font-weight:600">Associate Data Scientist — Société Générale</div>
+            <div class="small muted" style="color:var(--muted);margin:6px 0 8px;font-size:0.95rem">Jul 2023 — Present</div>
+            <div class="meta">Built sanction monitoring pipelines, deployed Kibana dashboards to monitor model health, and created retraining workflows to reduce false positives.</div>
+          </div>
+        </div>
 
-  <footer>
-    © 2025 Swagata Sur
+        <div class="item">
+          <div class="timeline-item">
+            <div style="font-weight:600">Generative AI PoC — Automated Anomaly Classification</div>
+            <div class="small muted" style="color:var(--muted);margin:6px 0 8px;font-size:0.95rem">PoC — 2024</div>
+            <div class="meta">Rule-based + LLM approach to classify anomalies into risk domains and create synthesis documents for business units.</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="timeline-item">
+            <div style="font-weight:600">AML Threshold Calibration</div>
+            <div class="small muted" style="color:var(--muted);margin:6px 0 8px;font-size:0.95rem">2022 — 2023</div>
+            <div class="meta">Calibrated AML thresholds across multiple entities and reduced alert volume by ~25%.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="container reveal">
+      <h2 class="section">Skills</h2>
+      <div class="two-grid">
+        <div class="card">
+          <div class="skill-line"><div class="skill-name">Python</div><div class="bar"><i data-width="90%"></i></div><div style="min-width:36px;text-align:right;color:var(--muted)">90%</div></div>
+          <div class="skill-line"><div class="skill-name">SQL / SAS</div><div class="bar"><i data-width="85%"></i></div><div style="min-width:36px;text-align:right;color:var(--muted)">85%</div></div>
+          <div class="skill-line"><div class="skill-name">ML / Modeling</div><div class="bar"><i data-width="88%"></i></div><div style="min-width:36px;text-align:right;color:var(--muted)">88%</div></div>
+        </div>
+
+        <div class="card">
+          <div class="skill-line"><div class="skill-name">Kedro / CI-CD</div><div class="bar"><i data-width="75%"></i></div><div style="min-width:36px;text-align:right;color:var(--muted)">75%</div></div>
+          <div class="skill-line"><div class="skill-name">LLMs / LangChain</div><div class="bar"><i data-width="70%"></i></div><div style="min-width:36px;text-align:right;color:var(--muted)">70%</div></div>
+          <div class="skill-line"><div class="skill-name">Kibana / Power BI</div><div class="bar"><i data-width="80%"></i></div><div style="min-width:36px;text-align:right;color:var(--muted)">80%</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="container reveal">
+      <h2 class="section">Education</h2>
+      <div class="card">
+        <div style="font-weight:600">M.Sc. in Statistics</div>
+        <div class="meta">Presidency University, Kolkata — 2021</div>
+        <div style="height:10px"></div>
+        <div style="font-weight:600">B.Sc. in Statistics</div>
+        <div class="meta">University of Calcutta — 2019</div>
+      </div>
+    </section>
+
+    <section id="contact" class="container reveal" style="text-align:center">
+      <h2 class="section">Contact</h2>
+      <p class="meta">I'm open to discussions and opportunities — feel free to reach out.</p>
+      <div style="height:12px"></div>
+      <div class="contact-row">
+        <a class="contact-btn" href="mailto:swagata.stats@gmail.com">Email: swagata.stats@gmail.com</a>
+        <a class="contact-btn" href="https://www.linkedin.com/in/swagata-sur?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
+        <a class="contact-btn" href="https://github.com/swagata-sur20" target="_blank">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer style="padding:28px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)">
+    © 2025 Swagata Sur — Built with HTML & GitHub Pages
   </footer>
 
+  <!-- small script: reveal on scroll + animate skill bars -->
+  <script>
+    // reveal elements on scroll
+    function revealOnScroll() {
+      document.querySelectorAll('.reveal').forEach(el=>{
+        const rect = el.getBoundingClientRect();
+        if(rect.top < (window.innerHeight - 80)) el.classList.add('show');
+      });
+    }
+    // animate skill bars
+    function animateSkills(){
+      document.querySelectorAll('.bar i').forEach(i=>{
+        const w = i.getAttribute('data-width') || '60%';
+        i.style.width = w;
+      });
+    }
+    // initial + events
+    window.addEventListener('load', ()=>{ revealOnScroll(); setTimeout(animateSkills,300); });
+    window.addEventListener('scroll', revealOnScroll);
+  </script>
 </body>
 </html>
