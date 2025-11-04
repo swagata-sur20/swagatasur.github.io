@@ -32,7 +32,7 @@ header.topnav{
 /* hero */
 .hero{min-height:78vh;display:flex;align-items:center;padding-top:84px}
 /* .hero-content{max-width:1100px;margin:0 auto;display:flex;gap:36px;align-items:center;flex-wrap:wrap} */
-/* .hero-left{flex:1} */
+
 .hero-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -42,12 +42,12 @@ header.topnav{
   gap: 80px; /* spacing between text and photo */
   padding: 0 40px;
 }
-
-.hero-left {
+.hero-left{flex:1}
+/* .hero-left {
   flex: 1;
   text-align: left;
-  margin-left: 40px;
-}
+  margin-left: 20px;
+} */
 
 .hero-right {
   flex-shrink: 0;
