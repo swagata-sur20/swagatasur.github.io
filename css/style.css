@@ -51,7 +51,7 @@ header.topnav{
   flex: 1;
   display: flex;
   justify-content: flex-end;
-  padding-right: 120px; /* move image slightly right */
+  padding-right: 60px; /* move image slightly right */
 }
 
 .title{font-size:2.8rem;margin:0 0 10px;font-weight:700}
