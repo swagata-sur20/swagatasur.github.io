@@ -16,9 +16,7 @@
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
         <a href="academics.html">Academics</a>
-        <a href="services.html">Services</a>
-        <a href="blog.html">Blog</a>
-        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -27,7 +25,7 @@
   <section class="hero" id="top">
     <div class="hero-content container">
       <div class="hero-left">
-        <h1 class="title">Hi, I’m <span style="color:#fff">Swagata Sur</span></h1>
+        <h1 class="title">Hi, I’m <span style="color:#fff">Swagata</span></h1>
         <div class="accent"></div>
         <p class="tag">Associate Data Scientist | Generative AI | Analytics | ML</p>
 
@@ -41,7 +39,7 @@
 
       <div class="hero-right">
         <div class="photo-wrap">
-          <img src="assets/Swagata-sur.jpg" alt="Swagata Sur">
+          <img src="Swagata-sur.jpg" alt="Swagata Sur">
         </div>
       </div>
     </div>
@@ -123,16 +121,21 @@
 
   <footer>© 2025 Swagata Sur. All rights reserved.</footer>
 
-  <script>
-    // reveal on scroll
-    function revealOnScroll(){
-      document.querySelectorAll('.reveal').forEach(el=>{
-        const r = el.getBoundingClientRect();
-        if(r.top < window.innerHeight - 80) el.classList.add('show');
-      });
-    }
-    window.addEventListener('load',revealOnScroll);
-    window.addEventListener('scroll',revealOnScroll);
-  </script>
+  <script defer>
+window.addEventListener('DOMContentLoaded', () => {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0,0);
+  function revealOnScroll(){
+    document.querySelectorAll('.reveal').forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.top<window.innerHeight-80) el.classList.add('show');
+    });
+  }
+  revealOnScroll();
+  window.addEventListener('scroll', revealOnScroll);
+});
+</script>
+
+
 </body>
 </html>
