@@ -1,100 +1,282 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swagata Sur | Data Scientist</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Swagata Sur — Associate Data Scientist</title>
+
+  <style>
+    :root {
+      --bg-top: #071124;
+      --bg-bot: #0f1724;
+      --muted: #9aa5b5;
+      --text: #e6eef6;
+      --card: rgba(255,255,255,0.02);
+      --accent: linear-gradient(90deg,#4f46e5,#06b6d4);
+      --blue-pill: #2563eb;
+    }
+
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    html,body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,var(--bg-top),var(--bg-bot));color:var(--text);}
+
+    a{color:inherit;text-decoration:none;transition:0.3s ease;}
+    a:hover{color:#fff}
+
+    /* Navbar */
+    header.topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(8,10,16,0.45);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    .nav-links a {
+      margin: 0 14px;
+      color: var(--muted);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Hero */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 80px;
+    }
+    .hero-content {
+      max-width: 1000px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-left { flex:1; }
+    .hero-left h1 { font-size: 3rem; margin: 0; font-weight:700; }
+    .hero-left .accent { height:6px;width:180px;border-radius:12px;margin:16px 0 22px;background:var(--accent);}
+    .hero-left p { color: var(--muted); line-height: 1.6; }
+    .socials { display:flex;gap:12px;margin-top:14px; }
+    .sbtn {
+      width:44px;height:44px;border-radius:10px;background:var(--card);
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(255,255,255,0.04);
+      transition: all .2s ease;
+    }
+    .sbtn:hover {transform:translateY(-5px) scale(1.05);box-shadow:0 0 12px rgba(79,70,229,0.4);}
+    .hero-right img {width:250px;height:250px;border-radius:50%;object-fit:cover;box-shadow:0 15px 40px rgba(0,0,0,0.4);}
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 24px 70px 24px;
+    }
+
+    h2.section {
+      font-size: 1.4rem;
+      font-weight:600;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 22px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* Skills */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill-pill {
+      background: var(--blue-pill);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      color: #fff;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .skill-pill:hover { background:#3b82f6; transform:translateY(-3px); }
+
+    /* Contact Section */
+    .contact-wrapper {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .contact-column { flex:1;min-width:280px; }
+    .contact-column h3 { font-size:1.2rem;margin-bottom:12px;font-weight:600; }
+    .contact-socials { display:flex;gap:15px;margin-top:15px; }
+
+    /* Fade-in animation */
+    .reveal {opacity:0;transform:translateY(30px);transition:all 0.8s ease;}
+    .reveal.show {opacity:1;transform:translateY(0);}
+
+    footer {
+      text-align:center;
+      padding: 28px 0;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 50px;
+    }
+
+    @media(max-width:880px){
+      .hero-left{text-align:center;}
+      .hero-content{justify-content:center;text-align:center;}
+      h2.section{text-align:center;}
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">Swagata Sur</div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+
+  <!-- Top Navbar -->
+  <header class="topnav">
+    <div class="nav-container">
+      <div class="nav-logo">Swagata Sur</div>
+      <div class="nav-links">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Projects</a>
+        <a href="#education">Academics</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </header>
 
-  <section id="hero">
-    <img src="Swagata-sur.jpg" alt="Swagata Sur" class="profile-pic">
-    <div class="hero-text">
-      <h1>Swagata Sur</h1>
-      <h3>Associate Data Scientist</h3>
-      <p>AML · Anomaly Detection · Generative AI · Machine Learning</p>
-      <div class="hero-links">
-        <a href="#projects" class="btn">View Projects</a>
-        <a href="mailto:swagata.stats@gmail.com" class="btn-outline">Contact</a>
+  <!-- Hero Section -->
+  <section class="hero" id="top">
+    <div class="hero-content">
+      <div class="hero-left">
+        <h1>Hi, I’m <span style="color:#fff">Swagata Sur</span></h1>
+        <div class="accent"></div>
+        <p>Associate Data Scientist | Generative AI | Analytics | ML</p>
+        <div class="socials">
+          <a class="sbtn" href="https://www.linkedin.com/in/swagata-sur" target="_blank">🔗</a>
+          <a class="sbtn" href="mailto:swagata.stats@gmail.com">📧</a>
+          <a class="sbtn" href="https://github.com/swagata-sur20" target="_blank">🐙</a>
+          <a class="sbtn" href="https://www.instagram.com/swa_ga_taa" target="_blank">📸</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="Swagata-sur.jpg" alt="Swagata Sur">
       </div>
     </div>
   </section>
 
-  <section id="about" class="container">
-    <h2>About Me</h2>
-    <p>
-      Associate Data Scientist with 2.5+ years of experience at Société Générale. Skilled in AML scenario calibration, anomaly detection, model monitoring, and Generative AI. Experienced with Python, PySpark, R, SAS, SQL, and data pipeline automation.
-    </p>
+  <!-- About -->
+  <section id="about" class="reveal">
+    <h2 class="section">About Me</h2>
+    <div class="card">
+      <p>
+        I’m an Associate Data Scientist with hands-on experience in developing analytics solutions within the AML and compliance space. I hold a postgraduate degree in Statistics from the University of Delhi and currently work at a leading French bank, where I focus on combining statistical modeling with AI to drive impactful, data-driven solutions. I’ve worked on projects spanning threshold calibration, Generative AI–based anomaly classification, and sanctions monitoring pipelines using Kedro, CI/CD, and Kibana.
+      </p>
+      <p>
+        Outside of work, I enjoy playing chess, traveling to new places, exploring diverse cuisines, and cooking — activities that fuel both my curiosity and creativity.
+      </p>
+    </div>
   </section>
 
-  <section id="experience" class="container">
-    <h2>Experience</h2>
-    <h3>Société Générale — Associate Data Scientist (Jul 2023 – Present)</h3>
-    <ul>
-      <li>Developed AML threshold calibration models and anomaly detection systems reducing alerts by 25%.</li>
-      <li>Created a Generative AI-based rule mapping system using LLM embeddings for anomaly classification.</li>
-      <li>Built end-to-end data pipelines with Kedro, Oozie, and Kibana dashboards for monitoring.</li>
-    </ul>
+  <!-- Skills -->
+  <section id="skills" class="reveal">
+    <h2 class="section">Key Skills</h2>
+    <div class="skills-list">
+      <div class="skill-pill">Machine Learning</div>
+      <div class="skill-pill">Generative AI</div>
+      <div class="skill-pill">Python</div>
+      <div class="skill-pill">SQL</div>
+      <div class="skill-pill">SAS</div>
+      <div class="skill-pill">LangChain</div>
+      <div class="skill-pill">Kedro</div>
+      <div class="skill-pill">CI/CD</div>
+      <div class="skill-pill">Kibana</div>
+      <div class="skill-pill">Power BI</div>
+    </div>
   </section>
 
-  <section id="projects" class="container">
-    <h2>Highlighted Projects</h2>
-    <div class="grid">
-      <div class="card">
-        <h4>Sanctions Monitoring Pipeline</h4>
-        <p>Built a real-time data pipeline with drift detection and KPI dashboards.</p>
+  <!-- Experience -->
+  <section id="experience" class="reveal">
+    <h2 class="section">Projects</h2>
+    <div class="card">
+      <h3>Société Générale</h3>
+      <p>
+        Worked on multiple data science and analytics projects within the AML and compliance domain, including threshold calibration for SAS AML, a Generative AI Proof of Concept for automated anomaly classification, and an end-to-end sanction-embargo monitoring pipeline with Kedro, CI/CD, and Kibana dashboards.
+      </p>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="reveal">
+    <h2 class="section">Academics</h2>
+    <div class="card">
+      <p><b>M.Sc. in Statistics</b> — University of Delhi, Delhi (2023)</p>
+      <p><b>B.Sc. in Statistics</b> — University of Calcutta (2021)</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="reveal">
+    <div class="contact-wrapper">
+      <div class="contact-column">
+        <h3>Connect With Me</h3>
+        <div class="contact-socials">
+          <a class="sbtn" href="https://www.linkedin.com/in/swagata-sur" target="_blank">🔗</a>
+          <a class="sbtn" href="https://github.com/swagata-sur20" target="_blank">🐙</a>
+          <a class="sbtn" href="https://www.instagram.com/swa_ga_taa" target="_blank">📸</a>
+        </div>
       </div>
-      <div class="card">
-        <h4>Generative AI Anomaly Classifier</h4>
-        <p>Used embeddings and LLMs to classify anomalies across risk domains.</p>
-      </div>
-      <div class="card">
-        <h4>AML Threshold Optimization</h4>
-        <p>Calibrated transaction monitoring thresholds using quantile analysis and sensitivity trade-offs.</p>
+      <div class="contact-column">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:swagata.stats@gmail.com">swagata.stats@gmail.com</a></p>
       </div>
     </div>
   </section>
 
-  <section id="skills" class="container">
-    <h2>Technical Skills</h2>
-    <p><strong>Programming:</strong> Python, PySpark, R, SAS, SQL</p>
-    <p><strong>ML/AI:</strong> Regression, Classification, Clustering, Anomaly Detection, PCA, LLM APIs</p>
-    <p><strong>Tools:</strong> Power BI, Git, Jupyter, Excel</p>
-    <p><strong>Domain:</strong> AML, KYC, Compliance, Regulatory Monitoring</p>
-  </section>
+  <footer>© 2025 Swagata Sur. All rights reserved.</footer>
 
-  <section id="education" class="container">
-    <h2>Education</h2>
-    <ul>
-      <li><strong>M.Sc. Statistics</strong> — Ramjas College, University of Delhi (2023) — 9.00 CGPA</li>
-      <li><strong>B.Sc. (Hons) Statistics</strong> — Bethune College, University of Calcutta (2021) — 7.53 CGPA</li>
-    </ul>
-  </section>
+  <script>
+    function revealOnScroll() {
+      document.querySelectorAll('.reveal').forEach(el=>{
+        const rect=el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 80) el.classList.add('show');
+      });
+    }
+    window.addEventListener('load',revealOnScroll);
+    window.addEventListener('scroll',revealOnScroll);
+  </script>
 
-  <section id="contact" class="container">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:swagata.stats@gmail.com">swagata.stats@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/placeholder" target="_blank">linkedin.com/in/placeholder</a></p>
-    <p>GitHub: <a href="https://github.com/placeholder" target="_blank">github.com/placeholder</a></p>
-  </section>
-
-  <footer>
-    <p>© 2025 Swagata Sur | Built with ❤️</p>
-  </footer>
 </body>
 </html>
