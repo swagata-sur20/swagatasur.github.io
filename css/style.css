@@ -28,6 +28,25 @@ header.topnav{
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent);transition:width .28s ease}
 .nav-links a:hover::after{width:100%}
 .nav-links a:hover{color:#fff}
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  position: relative;
+  padding: 6px 2px;
+  font-weight: 500;
+}
+
+.nav-links i {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
 
 /* hero */
 .hero{min-height:78vh;display:flex;align-items:center;padding-top:84px}
