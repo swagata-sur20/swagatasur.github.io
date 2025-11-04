@@ -1,119 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects | Swagata Sur</title>
-  <link rel="icon" type="image/x-icon" href="images/logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
-    /* ---------------- GLOBAL STYLES ---------------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    body {
-      background: #0f1117;
-      color: #f5f5f5;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      margin: 50px 0 20px;
-      color: #00ffc6;
-      letter-spacing: 1px;
-    }
-
-    /* ---------------- NAVBAR ---------------- */
-    nav {
-      background: rgba(15, 17, 23, 0.9);
-      backdrop-filter: blur(10px);
-      padding: 15px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: #00ffc6;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      color: #ddd;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: #00ffc6;
-    }
-
-    /* ---------------- PROJECTS GRID ---------------- */
+    /* Extend the same color palette */
     .projects-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 40px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 120px 22px 60px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
+      gap: 26px;
     }
 
     .project-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 15px;
-      padding: 25px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 14px;
+      padding: 24px;
       transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.3);
     }
 
     .project-card:hover {
       transform: translateY(-6px);
-      border-color: #00ffc6;
-      box-shadow: 0 6px 25px rgba(0,255,198,0.15);
+      border-color: rgba(79, 70, 229, 0.6); /* violet accent */
+      box-shadow: 0 6px 28px rgba(79,70,229,0.2);
     }
 
     .project-header h4 {
+      margin: 0 0 8px;
       font-size: 1.2rem;
-      color: #fff;
-      margin-bottom: 10px;
+      color: var(--text);
+      font-weight: 600;
     }
 
     .tech-stack {
       font-size: 0.9rem;
-      color: #aaa;
-      margin-bottom: 15px;
+      color: var(--muted);
+      margin-bottom: 10px;
     }
 
     .project-description {
       font-size: 0.95rem;
-      color: #ccc;
-      margin-bottom: 20px;
+      color: var(--muted);
+      margin-bottom: 18px;
     }
 
     .project-buttons {
@@ -126,93 +61,83 @@
       padding: 8px 14px;
       border-radius: 8px;
       font-size: 0.9rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 6px;
+      transition: all 0.25s ease;
     }
 
     .btn.primary {
-      background: #00ffc6;
-      color: #000;
+      background: linear-gradient(90deg,#4f46e5,#06b6d4);
+      color: #fff;
     }
 
     .btn.primary:hover {
-      background: #00d4a9;
+      opacity: 0.9;
       transform: translateY(-2px);
     }
 
     .btn.secondary {
-      border: 1px solid #00ffc6;
-      color: #00ffc6;
+      border: 1px solid #06b6d4;
+      color: #06b6d4;
     }
 
     .btn.secondary:hover {
-      background: #00ffc6;
-      color: #000;
+      background: #06b6d4;
+      color: #fff;
       transform: translateY(-2px);
     }
 
-    /* ---------------- FOOTER ---------------- */
+    h2.section {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 600;
+      background: var(--accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 100px;
+    }
+
     footer {
       text-align: center;
+      color: var(--muted);
       padding: 40px 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #888;
+      border-top: 1px solid rgba(255,255,255,0.03);
       font-size: 0.9rem;
     }
-
-    footer a {
-      color: #00ffc6;
-      font-weight: 500;
-    }
-
-    /* ---------------- ANIMATION ---------------- */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .project-card {
-      animation: fadeInUp 0.6s ease both;
-    }
-
   </style>
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">Swagata</div>
-    <div class="nav-links">
-      <a href="index.html"><i class="fas fa-home"></i> Home</a>
-      <a href="projects.html"><i class="fas fa-diagram-project"></i> Projects</a>
-      <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
-      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-    </div>
-  </nav>
 
-  <!-- Projects Section -->
-  <section>
-    <h2><i class="fas fa-flask"></i> Featured Projects</h2>
+  <!-- Top Nav -->
+  <header class="topnav">
+    <div class="nav-container">
+      <div class="nav-logo">Swagata Sur</div>
+      <nav class="nav-links">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="projects.html"><i class="fas fa-diagram-project"></i> Projects</a>
+        <a href="academics.html"><i class="fas fa-graduation-cap"></i> Academics</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Projects -->
+  <section class="reveal">
+    <h2 class="section">Featured Projects</h2>
     <div class="projects-container">
 
       <!-- Project 1 -->
       <div class="project-card">
         <div class="project-header">
-          <h4>🧠 LLM-Powered Resume Screener</h4>
+          <h4><i class="fas fa-brain"></i> LLM-Powered Resume Screener</h4>
           <p class="tech-stack">Python • OpenAI API • Streamlit</p>
         </div>
-        <p class="project-description">A smart resume analyzer that uses GPT-based models to screen resumes and rank candidates based on job descriptions.</p>
+        <p class="project-description">An AI-powered app that evaluates resumes against job descriptions using LLM embeddings and GPT-based semantic scoring.</p>
         <div class="project-buttons">
-          <a href="#" class="btn primary"><i class="fab fa-github"></i> View Code</a>
+          <a href="#" class="btn primary"><i class="fab fa-github"></i> Code</a>
           <a href="#" class="btn secondary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
         </div>
       </div>
@@ -220,75 +145,43 @@
       <!-- Project 2 -->
       <div class="project-card">
         <div class="project-header">
-          <h4>📊 Sales Forecasting Dashboard</h4>
+          <h4><i class="fas fa-chart-line"></i> Sales Forecast Dashboard</h4>
           <p class="tech-stack">Python • Prophet • Tableau</p>
         </div>
-        <p class="project-description">Built an interactive dashboard that predicts future sales using time-series models and visualizes regional trends dynamically.</p>
+        <p class="project-description">A time-series forecasting dashboard that visualizes multi-region sales trends and provides demand prediction using Prophet.</p>
         <div class="project-buttons">
-          <a href="#" class="btn primary"><i class="fab fa-github"></i> View Code</a>
-          <a href="#" class="btn secondary"><i class="fas fa-chart-line"></i> View Report</a>
+          <a href="#" class="btn primary"><i class="fab fa-github"></i> Code</a>
+          <a href="#" class="btn secondary"><i class="fas fa-file-alt"></i> Report</a>
         </div>
       </div>
 
       <!-- Project 3 -->
       <div class="project-card">
         <div class="project-header">
-          <h4>🔍 Text Summarization with T5</h4>
-          <p class="tech-stack">Transformers • PyTorch • NLP</p>
+          <h4><i class="fas fa-database"></i> Anomaly Detection in Transactions</h4>
+          <p class="tech-stack">Python • LSTM Autoencoder • Kedro</p>
         </div>
-        <p class="project-description">Implemented a fine-tuned T5 model to generate concise summaries of long-form content with ROUGE score optimization.</p>
+        <p class="project-description">Developed an AML-focused anomaly detection pipeline using autoencoders integrated into CI/CD workflows with Kedro.</p>
         <div class="project-buttons">
-          <a href="#" class="btn primary"><i class="fab fa-github"></i> View Code</a>
-          <a href="#" class="btn secondary"><i class="fas fa-file-alt"></i> Read Paper</a>
-        </div>
-      </div>
-
-      <!-- Project 4 -->
-      <div class="project-card">
-        <div class="project-header">
-          <h4>📈 Anomaly Detection in Time Series</h4>
-          <p class="tech-stack">Python • LSTM Autoencoder</p>
-        </div>
-        <p class="project-description">Developed a deep learning pipeline for detecting anomalies in energy consumption data using LSTM-based autoencoders.</p>
-        <div class="project-buttons">
-          <a href="#" class="btn primary"><i class="fab fa-github"></i> View Code</a>
-          <a href="#" class="btn secondary"><i class="fas fa-file-alt"></i> Documentation</a>
-        </div>
-      </div>
-
-      <!-- Project 5 -->
-      <div class="project-card">
-        <div class="project-header">
-          <h4>🤖 Chatbot for Mental Health Support</h4>
-          <p class="tech-stack">Python • LangChain • Streamlit</p>
-        </div>
-        <p class="project-description">Created a conversational AI agent fine-tuned for empathetic responses using LLMs and knowledge base grounding.</p>
-        <div class="project-buttons">
-          <a href="#" class="btn primary"><i class="fab fa-github"></i> View Code</a>
-          <a href="#" class="btn secondary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          <a href="#" class="btn primary"><i class="fab fa-github"></i> Code</a>
+          <a href="#" class="btn secondary"><i class="fas fa-file-alt"></i> Docs</a>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 Swagata Sur • Built with ❤️ using HTML & CSS | <a href="https://github.com/">GitHub</a>
-  </footer>
+  <footer>© 2025 Swagata Sur. Built with 💙 using HTML & CSS.</footer>
 
   <script>
-    // Optional subtle fade animation on scroll
-    const cards = document.querySelectorAll('.project-card');
-    window.addEventListener('scroll', () => {
-      cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        if (cardTop < window.innerHeight - 100) {
-          card.style.opacity = "1";
-          card.style.transform = "translateY(0)";
-        }
-      });
+  // same reveal animation as main site
+  window.addEventListener('scroll',()=>{
+    document.querySelectorAll('.reveal').forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.top<window.innerHeight-80) el.classList.add('show');
     });
+  });
   </script>
+
 </body>
 </html>
