@@ -31,28 +31,14 @@ header.topnav{
 
 /* hero */
 .hero{min-height:78vh;display:flex;align-items:center;padding-top:84px}
-.hero-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* ensures text & photo spread evenly */
-  gap: 100px; /* increased from ~40px for better separation */
-  padding: 0 60px; /* gives breathing space on both sides */
-}
-
+.hero-content{max-width:1100px;margin:0 auto;display:flex;gap:36px;align-items:center;flex-wrap:wrap}
+/* .hero-left{flex:1} */
 .hero-left {
   flex: 1;
   text-align: left;
   margin-left: -40px; /* move text slightly left */
 }
-
-.hero-right {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 60px; /* move image slightly right */
-}
+.hero-right{width:280px;display:flex;align-items:center;justify-content:center}
 
 .title{font-size:2.8rem;margin:0 0 10px;font-weight:700}
 .accent{height:6px;width:180px;border-radius:12px;margin:12px 0;background:var(--accent);position:relative;overflow:hidden}
