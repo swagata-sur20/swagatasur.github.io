@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects — Swagata Sur</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -9,24 +10,49 @@
   <header class="topnav">
     <div class="nav-container">
       <div class="nav-logo">Swagata Sur</div>
-      <div class="nav-links">
+      <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
         <a href="academics.html">Academics</a>
         <a href="services.html">Services</a>
         <a href="blog.html">Blog</a>
         <a href="gallery.html">Gallery</a>
-      </div>
+      </nav>
     </div>
   </header>
 
-  <section class="reveal" style="padding-top:120px">
+  <section style="padding-top:110px" class="reveal container">
     <h2 class="section">Projects</h2>
+
     <div class="card">
-      <p>Project list and details will appear here.</p>
+      <h3>Generative AI PoC — Automated Anomaly Classification</h3>
+      <p>
+        Developed a system using embeddings, clustering and LLM prompting to automate anomaly classification into risk domains and generate synthesis docs for business units. Reduced manual analyst effort by 2–3 weeks.
+      </p>
+      <p><a href="project-1/index.html">Read more →</a></p>
+    </div>
+
+    <div class="card">
+      <h3>Sanction Embargo Monitoring Pipeline</h3>
+      <p>
+        End-to-end Kedro pipeline with Oozie scheduling and Kibana dashboards monitoring 6+ KPIs. Implemented retraining workflows to reduce false positives.
+      </p>
+      <p><a href="project-2/index.html">Read more →</a></p>
+    </div>
+
+    <div class="card">
+      <h3>SAS AML — Threshold Calibration</h3>
+      <p>
+        Statistical calibration across entities to optimise detection and reduce false positives by ~25%.
+      </p>
     </div>
   </section>
 
   <footer>© 2025 Swagata Sur. All rights reserved.</footer>
+
+  <script>
+    function revealOnScroll(){document.querySelectorAll('.reveal').forEach(el=>{const r=el.getBoundingClientRect(); if(r.top<window.innerHeight-80) el.classList.add('show');});}
+    window.addEventListener('load',revealOnScroll);window.addEventListener('scroll',revealOnScroll);
+  </script>
 </body>
 </html>
